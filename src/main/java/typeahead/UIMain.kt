@@ -51,6 +51,8 @@ class App : Application() {
             load()
         } successUi {
             guard.close()
+        } fail {
+            throw RuntimeException(it)
         }
 
         stage.scene = Scene(vbox)
