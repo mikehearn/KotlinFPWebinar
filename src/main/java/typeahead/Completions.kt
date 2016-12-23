@@ -26,7 +26,7 @@ fun NavigableSet<NGram>.complete(input: String): List<String> {
     // ]
 
     val canonicalisedInput = input.toLowerCase()
-    val seq = sequenceOf(canonicalisedInput.lastIndex + 1 downTo 0).map {
+    val seq = (canonicalisedInput.lastIndex + 1 downTo 0).asSequence().map {
         canonicalisedInput.substring(0, it) to canonicalisedInput.substring(it)
     }
     fun NavigableSet<NGram>.query(s: String) = tailSet(NGram(s)).headSet(NGram(s + Char.MAX_SURROGATE))
